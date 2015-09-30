@@ -59,7 +59,7 @@ class UsersController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'server' => $User->server,
+                    'server' => intval( $User->server ),
                     'game_name' => $User->game_name,
                     'username' => $User->username,
                     'avatar' => $User->avatar,
@@ -67,7 +67,7 @@ class UsersController extends Controller
             ]);
         } catch (\Exception $e) {
             DB::rollBack();
-            return json_encode([
+            return response()->json([
                 'success' => false,
                 'message' => (\App::environment('local'))?$e->getMessage():"",
             ]);
@@ -88,7 +88,7 @@ class UsersController extends Controller
             return response()->json([
                 'success' => true,
                 'data' => [
-                    'server' => $User->server,
+                    'server' => intval( $User->server ),
                     'game_name' => $User->game_name,
                     'username' => $User->username,
                     'avatar' => $User->avatar,
@@ -106,22 +106,72 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $username)
     {
-        return $id."<br />".json_encode($request);
+        DB::beginTransaction();
+        try {
+            $Validation = Validator::make($request->all(), [
+                'email' => 'email|max:255',
+                'password' => 'min:5|max:20',
+                'avatar' => 'url',
+            ]);
+            
+            if ($Validation->fails()){
+                throw new \Exception($Validation->errors()->all()[0]);
+            }
+            
+            $User = User::where('username', $username)->firstOrFail();
+            $User->email = $request->input('email');
+            $User->password = Hash::make( $request->input('password') );
+            $User->avatar = $request->input('avatar');
+            $User->save();
+            
+            DB::commit();
+            return response()->json([
+                'call' => $request->all(),
+                'success' => true,
+                'data' => [
+                    'server' => intval( $User->server ),
+                    'game_name' => $User->game_name,
+                    'username' => $User->username,
+                    'avatar' => $User->avatar,
+                ],
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => (\App::environment('local'))?$e->getMessage():"",
+            ]);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $username
      * @return \Illuminate\Http\Response
      */
-    public function deactivate($id)
+    public function deactivate($username)
     {
-        return $id;
+        DB::beginTransaction();
+        try {
+            $User = User::where('username', $username)->firstOrFail();
+            $User->delete();
+            
+            DB::commit();
+            return response()->json([
+                'success' => true,
+            ]);
+        }catch(\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage(),
+            ]);
+        }
     }
 }
