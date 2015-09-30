@@ -9,4 +9,5 @@ before_script:
   - npm install --global gulp
   - npm install
   - gulp
+  - mysql -e 'create database kc3_main;'
   - php artisan migrate
