@@ -1,4 +1,7 @@
 # KC3 Website [![Build Status](https://travis-ci.org/KC3Kai/kc3-website.svg)](https://travis-ci.org/KC3Kai/kc3-website)
+
+URL: http://kc3.jetri.co
+
 Website for KC3改 and its Social System.
 
 
