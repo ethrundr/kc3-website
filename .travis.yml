@@ -6,3 +6,7 @@ before_script:
   - cp .env.travis .env
   - composer self-update
   - composer install
+  - npm install --global gulp
+  - npm install
+  - gulp
+  - php artisan migrate
