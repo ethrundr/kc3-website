@@ -33,13 +33,13 @@ Website for KC3改 and its Social System.
 * Test the application by going to `http://localhost/<project_dir>` on your browser
 
 
-  #### Prodedure (without webserver applications)
-  Even without webserver apps like XAMPP or WAMP, you'll still need PHP installed on the computer.
-  
-  1. Clone on any directory
-  * Run `composer install`
-  * Run `npm install`
-  * Run `gulp`
-  * Run `php -S localhost:8000`. This will run a temporary webserver.
-  * Test the application by going to `http://localhost:8000` on your browser
-  * When done, press `Ctrl+C` on the console to stop the temp webserver
+#### Prodedure (without webserver applications)
+Even without webserver apps like XAMPP or WAMP, you'll still need PHP installed on the computer.
+
+1. Clone on any directory
+* Run `composer install`
+* Run `npm install`
+* Run `gulp`
+* Run `php -S localhost:8000`. This will run a temporary webserver.
+* Test the application by going to `http://localhost:8000` on your browser
+* When done, press `Ctrl+C` on the console to stop the temp webserver
