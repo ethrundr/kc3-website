@@ -17,7 +17,7 @@ class Initialize extends Migration
             $table->integer('server')->unsigned();
             $table->bigInteger('game_id')->unsigned();
             $table->string('game_name', 100);
-            $table->string('username', 100);
+            $table->string('username', 100)->unique();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->text('avatar');
