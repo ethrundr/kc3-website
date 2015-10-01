@@ -1,28 +1,29 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+/* DECODES
+--------------------------------------------------------------------------*/
+Route::controller('decodes/art', 'Decode\ArtController');
+Route::controller('decodes/furniture', 'Decode\FurnitureController');
+Route::controller('decodes/items', 'Decode\ItemController');
+Route::controller('decodes/maps', 'Decode\MapController');
+Route::controller('decodes/master', 'Decode\MasterController');
+Route::controller('decodes/voice', 'Decode\VoiceController');
+Route::controller('decodes', 'Decode\MainController');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
+/* KC3 API
+--------------------------------------------------------------------------*/
 Route::get('api/users', 'Api\UsersController@index');
 Route::post('api/users', 'Api\UsersController@create');
 Route::get('api/users/{id}', 'Api\UsersController@get');
 Route::post('api/users/{id}', 'Api\UsersController@update');
 Route::delete('api/users/{id}', 'Api\UsersController@deactivate');
 
+/* KC3 SOCIAL SITE
+--------------------------------------------------------------------------*/
 Route::get('player/{id}', function ($id) {
     return 'User '.$id;
 });
+
+/* MAIN SITE
+--------------------------------------------------------------------------*/
+Route::controller('/', 'Site\HomeController');

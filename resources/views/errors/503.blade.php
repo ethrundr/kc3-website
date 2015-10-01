@@ -1,47 +1,49 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Be right back.</title>
+@extends('layouts.bare')
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('title', 'KC3改 Site Maintenance')
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+@section('styles')
+	@parent
+    <link rel="stylesheet" href="css/errors.css" media="screen" charset="utf-8"> 
+	<style media="screen">
+		body { background:#D75048; }
+	</style>
+@endsection
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                color: #B0BEC5;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Be right back.</div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('content')
+<div class="e503">
+	<div class="container-fluid banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-11 col-xs-push-1 message title">
+					Unavailable
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-11 col-xs-push-1 message description">
+					The website is under maintenance.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container moreLinks">
+		<div class="row">
+			<div class="col-xs-12 message">In the mean time.. enjoy content from these other links:</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3"><div class="linkBox">
+				1234
+			</div></div>
+			<div class="col-xs-3"><div class="linkBox">
+				1234
+			</div></div>
+			<div class="col-xs-3"><div class="linkBox">
+				1234
+			</div></div>
+			<div class="col-xs-3"><div class="linkBox">
+				1234
+			</div></div>
+		</div>
+	</div>
+</div>
+@endsection

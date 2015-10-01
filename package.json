@@ -5,6 +5,12 @@
   },
   "dependencies": {
     "laravel-elixir": "^3.0.0",
-    "bootstrap-sass": "^3.0.0"
+    "bootstrap-sass": "^3.0.0",
+    "angular": "^1.4.5",
+    "angular-resource": "^1.4.5",
+    "jquery": "^2.1.4",
+    "jquery-ui": "^1.10.5",
+    "lodash": "^3.10.1",
+    "underscore": "^1.8.3"
   }
 }

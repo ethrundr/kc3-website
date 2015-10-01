@@ -1,0 +1,65 @@
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+body {
+	background:#eee;
+	padding-top: 45px;
+}
+
+/* HEADER
+--------------------*/
+.kc3header {
+	height:45px;
+	min-height: 45px;
+	background: -webkit-linear-gradient(#D75048, #a83b34);
+	background: -o-linear-gradient(#D75048, #a83b34);
+	background: -moz-linear-gradient(#D75048, #a83b34);
+	background: linear-gradient(#D75048, #a83b34);
+	border-bottom:1px solid #d19490;
+	
+	.icon-bar {
+		border:1px solid #ffcc00;
+	}
+	.container {
+		.navbar-brand {
+			width:100px;
+			height:43px;
+			padding:3px 0px;
+			margin:0px 20px 0px 0px;
+			img {
+				width:100px;
+				height:37px;
+			}
+		}
+		.kc3menu {
+			padding:5px 0px 0px;
+			ul {
+				margin:0px;
+			}
+			li {
+				margin:0px 10px 0px 0px;
+				a {
+					color:#fff;
+					padding:7px 15px;
+					border-radius:8px;
+				}
+				a:hover {
+					background:#93312b;
+				}
+			}
+			li.active {
+				a {
+					background:#fff;
+					color:#a83b34;
+				}
+			}
+		}
+	}
+}
+
+
+
+/* BODY
+--------------------*/
+.kc3body {
+	background:#fff;
+}
