@@ -13,13 +13,10 @@
 	padding:60px 0px 0px 0px;
 	
 	.banner {
-		background:url(../img/bg/scream.jpg);
-		background-size: cover;
-		background-position:center center;
 		border-top:1px inset #dba9a7;
 		border-bottom:1px inset #dba9a7;
 		height:300px;
-		padding: 40px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
 		font-family: 'Josefin Sans', sans-serif;
 		cursor:default;
 		-webkit-user-select: none;
@@ -27,17 +24,34 @@
 		-ms-user-select: none;
 		user-select: none;
 		
-		.message {
-			color:#fff;
-			text-shadow:0px 0px 2px #000,
-				2px 2px 4px #000,
-				2px 2px 4px #000;
+		.banner-bg {
+			position:absolute;
+			width:100%;
+			height:300px;
+			background:url(../img/bg/scream.jpg);
+			background-size: cover;
+			background-position:center center;
+			-webkit-filter: blur(5px);
+			-moz-filter: blur(5px);
+			-o-filter: blur(5px);
+			-ms-filter: blur(5px);
+			filter: blur(5px);
+			overflow:hidden;
 		}
-		.title {
-			font-size:3.5em;
-		}
-		.description {
-			font-size:1.4em;
+		.messages {
+			padding:40px 0px 0px 0px;
+			.message {
+				color:#fff;
+				text-shadow:0px 0px 2px #000,
+					2px 2px 4px #000,
+					2px 2px 4px #000;
+			}
+			.title {
+				font-size:3.5em;
+			}
+			.description {
+				font-size:1.4em;
+			}
 		}
 	}
 	

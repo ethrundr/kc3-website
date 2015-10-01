@@ -13,7 +13,9 @@
 @section('content')
 <div class="e503">
 	<div class="container-fluid banner">
-		<div class="container">
+		<div class="banner-bg"></div>
+		<div class="clearfix"></div>
+		<div class="container messages">
 			<div class="row">
 				<div class="col-xs-11 col-xs-push-1 message title">
 					Unavailable
