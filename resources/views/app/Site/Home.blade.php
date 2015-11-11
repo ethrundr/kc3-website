@@ -13,14 +13,5 @@
 @endsection
 
 @section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-xs-12" style="background:#fcc;">asd</div>
-	</div>
-</div>
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12" style="background:#cfc;">1234</div>
-	</div>
-</div>
+	
 @endsection
