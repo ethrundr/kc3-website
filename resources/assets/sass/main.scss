@@ -55,11 +55,12 @@ body {
 			a:hover {
 				background:#93312b;
 			}
+			a.active {
+				background:#fff;
+				color:#a83b34;
+			}
 		}
-		li.active {
-			background:#fff;
-			color:#a83b34;
-		}
+		
 	}
 	
 	.kc3profile {

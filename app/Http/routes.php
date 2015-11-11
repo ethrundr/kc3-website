@@ -28,6 +28,7 @@ Route::get('player/{id}', function ($id) {
 --------------------------------------------------------------------------*/
 Route::controller('data/master', 'Data\MasterController');
 Route::controller('data/quests', 'Data\QuestsController');
+Route::controller('data', 'Data\MainController');
 
 /* MAIN SITE
 --------------------------------------------------------------------------*/

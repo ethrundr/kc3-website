@@ -19,9 +19,9 @@
                 </div>
                 <div class="kc3menu">
                     <ul>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Social System</a></li>
-                        <li><a href="{{url('data/master')}}">Data Collection</a></li>
+                        <li><a @yield('active_docs') href="#">Documentation</a></li>
+                        <li><a @yield('active_social') href="#">Social System</a></li>
+                        <li><a @yield('active_data') href="{{url('data')}}">Data Collection</a></li>
                     </ul>
                 </div>
                 <div class="kc3profile">
