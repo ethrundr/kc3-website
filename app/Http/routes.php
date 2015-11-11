@@ -24,6 +24,11 @@ Route::get('player/{id}', function ($id) {
     return 'User '.$id;
 });
 
+/* KC3 DATA
+--------------------------------------------------------------------------*/
+Route::controller('data/master', 'Data\MasterController');
+Route::controller('data/quests', 'Data\QuestsController');
+
 /* MAIN SITE
 --------------------------------------------------------------------------*/
 Route::controller('/', 'Site\HomeController');
