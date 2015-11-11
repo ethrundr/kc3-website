@@ -12,10 +12,18 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('main.scss');
-    mix.sass('bare.scss');
+    mix.sass([
+        'main.scss',
+        'errors.scss'
+    ], 'public/css/main.css');
     
-    mix.sass('errors.scss');
+    mix.sass([
+        'bare.scss',
+        'errors.scss'
+    ], 'public/css/bare.css');
+    
+    mix.sass('data/master.scss', 'public/css/data/master.scss');
+    mix.sass('data/quests.scss', 'public/css/data/quests.scss');
     
     // mix.sass('Site/home.scss', 'public/css/site/home.css');
     

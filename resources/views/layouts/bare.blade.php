@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <title>@yield('title')</title>
         @section('styles')
-        <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/bare.css" media="screen" title="no title" charset="utf-8">
-        <link rel="icon" type="image/png" href="{{asset('img/logo/32.png')}}">
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Josefin+Sans'>
+        <link rel="stylesheet" type='text/css' href="{{asset('css/bare.css')}}">
         @show
+        <link rel="icon" type="image/png" href="{{asset('img/logo/32.png')}}">
     </head>
     <body>
         @yield('content')
 		
         @section('scripts')
-        <script src="js/main.js" charset="utf-8"></script>
+        <script src="{{asset('js/main.js')}}" charset="utf-8"></script>
         @show
     </body>
 </html>

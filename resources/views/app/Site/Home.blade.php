@@ -1,6 +1,6 @@
-@extends('layouts.bare')
+@extends('layouts.main')
 
-@section('title', 'KanColle Command Center 改')
+@section('title', 'KC3改 Web')
 
 @section('styles')
 	@parent

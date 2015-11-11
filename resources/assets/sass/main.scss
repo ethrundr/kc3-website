@@ -8,49 +8,104 @@ body {
 /* HEADER
 --------------------*/
 .kc3header {
-	height:45px;
-	min-height: 45px;
+	/*height:43px;
+	min-height: 43px;*/
+	min-height: 0px;
 	background: -webkit-linear-gradient(#D75048, #a83b34);
 	background: -o-linear-gradient(#D75048, #a83b34);
 	background: -moz-linear-gradient(#D75048, #a83b34);
 	background: linear-gradient(#D75048, #a83b34);
 	border-bottom:1px solid #d19490;
 	
-	.icon-bar {
-		border:1px solid #ffcc00;
+	.kc3logo {
+		width:32px;
+		margin:0px 15px 0px 0px;
+		padding:5px 0px 5px 0px;
+		float:left;
+		
+		img {
+			width:32px;
+			height:32px;
+			vertical-align: top;
+		}
 	}
-	.container {
-		.navbar-brand {
-			width:100px;
-			height:43px;
-			padding:3px 0px;
-			margin:0px 20px 0px 0px;
-			img {
-				width:100px;
-				height:37px;
+	
+	.kc3menu {
+		width:380px;
+		float:left;
+		padding:5px 0px 5px 0px;
+		
+		ul {
+			margin:0px;
+			list-style: none;
+			line-height:32px;
+			padding:0px;
+		}
+		li {
+			float: left;
+			margin:0px 10px 0px 0px;
+			a {
+				border-radius:8px;
+				display:block;
+				height:32px;
+				color:#fff;
+				padding:0px 10px;
+				text-decoration: none;
+			}
+			a:hover {
+				background:#93312b;
 			}
 		}
-		.kc3menu {
-			padding:5px 0px 0px;
-			ul {
-				margin:0px;
+		li.active {
+			background:#fff;
+			color:#a83b34;
+		}
+	}
+	
+	.kc3profile {
+		width:300px;
+		padding:5px 0px 5px 0px;
+		line-height:32px;
+		float:right;
+		
+		.profile_img {
+			float:left;
+			height:32px;
+			margin:0px 5px 0px 0px;
+			border-radius:7px;
+			overflow:hidden;
+			img {
+				width:32px;
+				height:32px;
+				vertical-align: top;
 			}
-			li {
-				margin:0px 10px 0px 0px;
-				a {
-					color:#fff;
-					padding:7px 15px;
-					border-radius:8px;
-				}
-				a:hover {
-					background:#93312b;
-				}
+		}
+		.profile_name {
+			float:left;
+			height:32px;
+			max-width:120px;
+			overflow:hidden;
+			font-weight:bold;
+			a {
+				color:#ffcc00;
 			}
-			li.active {
-				a {
-					background:#fff;
-					color:#a83b34;
-				}
+		}
+		
+		ul {
+			float:right;
+			margin:0px;
+			list-style: none;
+			line-height:32px;
+			padding:0px;
+		}
+		li {
+			margin:0px 10px 0px 0px;
+			float: left;
+			a {
+				display:block;
+				height:32px;
+				color:#fff;
+				text-decoration: none;
 			}
 		}
 	}
