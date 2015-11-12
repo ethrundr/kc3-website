@@ -23,8 +23,22 @@ class QuestsController extends Controller {
         ]);
     }
     
-    public function postSubmit(){
-        
+    public function postSubmit(Request $request){
+        if ($request->isMethod('post')) {
+            $raw = $request->input('data');
+            $list = json_decode($raw);
+            if(is_array($list)){
+                foreach($list as $quest){
+                    if(isset($quest->api_no)){
+                        Storage::put('quests/'.$quest->api_no.'.json', json_encode($quest));
+                    }
+                }
+                return response()->json(['success'=>true])
+                    ->header('Access-Control-Allow-Origin', '*');
+            }
+        }
+        return response()->json(['success' => false])
+            ->header('Access-Control-Allow-Origin', '*');
     }
     
 }

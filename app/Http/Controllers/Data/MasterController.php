@@ -16,8 +16,20 @@ class MasterController extends Controller {
         ]);
     }
     
-    public function postSubmit(){
-        
+    public function postSubmit(Request $request){
+        if ($request->isMethod('post')) {
+            $raw = $request->input('data');
+            $obj = json_decode($raw);
+            if(isset($obj->api_data)){
+                Storage::put('master/latest.json', $raw);
+                return response()->json(['success'=>true])
+                    ->header('Access-Control-Allow-Origin', '*');
+                    //  ->setCallback($request->input('callback'));
+            }
+        }
+        return response()->json(['success' => false])
+            ->header('Access-Control-Allow-Origin', '*');
+            // ->setCallback($request->input('callback'));
     }
     
 }
