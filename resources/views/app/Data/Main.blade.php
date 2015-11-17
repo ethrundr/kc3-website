@@ -28,6 +28,9 @@
 			<p>
 				not working yet
 			</p>
+
+			<h3><a href="{{url('data/quotes')}}">Kanmusu Quotes</a></h3>
+			<p>In progress</p>
 		</div>
 	</div>
 @endsection
