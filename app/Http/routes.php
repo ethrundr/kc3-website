@@ -26,10 +26,11 @@ Route::get('player/{id}', function ($id) {
 
 /* KC3 DATA
 --------------------------------------------------------------------------*/
-Route::controller('data/master', 'Data\MasterController');
-Route::controller('data/quests', 'Data\QuestsController');
-Route::controller('data/quotes', 'Data\QuotesController');
-Route::controller('data', 'Data\MainController');
+Route::controller('data/master' , 'Data\MasterController');
+Route::controller('data/quests' , 'Data\QuestsController');
+Route::post('data/quotes/addQuote', 'Data\QuotesController@submitQuote');
+Route::controller('data/quotes' , 'Data\QuotesController');
+Route::controller('data'        , 'Data\MainController');
 
 /* MAIN SITE
 --------------------------------------------------------------------------*/

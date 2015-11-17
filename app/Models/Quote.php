@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,4 +12,5 @@ class Quote extends Model
      * @var array
      */
     protected $fillable = ['ship_id', 'voice_id', 'lang', 'content'];
+    protected $table = 'quotes';
 }
