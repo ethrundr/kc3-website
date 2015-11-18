@@ -12,6 +12,7 @@ use Storage;
 class QuotesController extends Controller {
     
     private $languageList = ["de", "en", "es", "fr", "id", "it", "jp", "kr", "nl", "pt", "ru", "scn", "tcn", "th", "vi"];
+    
     private $quoteTitle = [ 1 =>"Intro",
                             2 => "Poke(1)",
                             3 => "Poke(2)",
@@ -95,8 +96,48 @@ class QuotesController extends Controller {
         ]);
     }
 
+    public function acceptQuote($quote_id) {
+        $quoteToAccept = Quote::findOrFail($quote_id);
+        Quote::where('ship_id', $quoteToAccept['ship_id'])
+                ->where('voice_id', $quoteToAccept['voice_id'])
+                ->where('lang', $quoteToAccept['lang'])
+                ->update(['status' => 'Pending']);
+        Quote::where('id', $quoteToAccept['id'])
+                ->update(['status' => 'Accepted']);
+        $this->updateCounter($quoteToAccept['ship_id'], $quoteToAccept['lang']);
+        if (is_numeric($quoteToAccept['ship_id'])) {
+            return redirect('/data/quotes/ship/'.$quoteToAccept['ship_id']);
+        } else {
+            return redirect('/data/quotes/npc/'.$quoteToAccept['ship_id']);
+        }
+    }
+
+    public function pendQuote($quote_id) {
+        $quoteToPend = Quote::findOrFail($quote_id);
+        Quote::where('id', $quote_id)->update(['status' => 'Pending']);
+        $this->updateCounter($quoteToPend['ship_id'], $quoteToPend['lang']);
+        if (is_numeric($quoteToPend['ship_id'])) {
+            return redirect('/data/quotes/ship/'.$quoteToPend['ship_id']);
+        } else {
+            return redirect('/data/quotes/npc/'.$quoteToPend['ship_id']);
+        }
+    }
+
+    public function deleteQuote($quote_id) {
+        $quoteToDelete = Quote::findOrFail($quote_id);
+        $ship_id = $quoteToDelete['ship_id'];
+        $lang = $quoteToDelete['lang'];
+        $quoteToDelete->delete();
+        $this->updateCounter($ship_id, $lang);
+        if (is_numeric($ship_id)) {
+            return redirect('/data/quotes/ship/'.$ship_id);
+        } else {
+            return redirect('/data/quotes/npc/'.$ship_id);
+        }
+    }
+
     public function showShipQuote($ship_id) {
-        $shipQuotes = Quote::where('ship_id', $ship_id)->orderBy('voice_id', 'asc')->get();
+        $shipQuotes = Quote::where('ship_id', $ship_id)->orderBy('status', 'asc')->get();
         $result = Array();
         for($i = 1; $i <= 53; $i++) {
             $result[$i] = Array();
@@ -110,6 +151,29 @@ class QuotesController extends Controller {
             'quotes' => $result,
             'ship_id' => $ship_id,
             'quoteTitle' => $this->quoteTitle
+        ]);
+    }
+
+    public function showNpcQuote($ship_id) {
+        $shipQuotes = Quote::where('ship_id', $ship_id)->orderBy('voice_id', 'asc')->orderBy('status', 'asc')->get();
+        $result = Array();
+        $quoteTitle = Array();
+        //echo 'aaaaa';
+        foreach ($shipQuotes as $quote) {
+            $voice_id = $quote['voice_id'];
+            //echo $voice_id.'<br>';
+            if (!array_key_exists($voice_id, $result)) {
+                $result[$voice_id] = Array();
+                $quoteTitle[] = $voice_id;
+            }
+            $result[$voice_id][] = $quote;
+            
+        }
+        //echo 'end';
+        return view("app/Data/NpcQuote", [
+            'quotes' => $result,
+            'ship_id' => $ship_id,
+            'quoteTitle' => $quoteTitle
         ]);
     }
 
@@ -139,16 +203,29 @@ class QuotesController extends Controller {
     }
 
     public function submitQuote(Request $request) {
+        //echo 'aaaaaaa';
+        //echo $request;
         $quote = new Quote;
         $quote->ship_id     = $request->ship_id;
         $quote->voice_id    = $request->voice_id;
         $quote->lang        = $request->lang;
         $quote->content     = $request->content;
-        $quote->status      = "Accepted";
-        $quote->save();
+        $quote->status      = "Pending";
 
-        $this->updateCounter($quote->ship_id, $quote->lang);
-        return redirect('/data/quotes');
+        $sameQuotes = Quote::where('ship_id', $quote['ship_id'])
+                            ->where('voice_id', $quote['voice_id'])
+                            ->where('lang', $quote['lang'])
+                            ->where('content', $quote['content'])->get();
+        if (count($sameQuotes) == 0) {
+            $quote->save();
+            $this->updateCounter($quote->ship_id, $quote->lang);
+        }
+        
+        if (is_numeric($quote['ship_id'])) {
+            return redirect('/data/quotes/ship/'.$quote['ship_id']);
+        } else {
+            return redirect('/data/quotes/npc/'.$quote['ship_id']);
+        }
     }
 
     public function import() {
@@ -163,14 +240,14 @@ class QuotesController extends Controller {
                 $newQuote = new Quote;
                 $newQuote->ship_id     = $ship_id;
                 $newQuote->voice_id    = $voice_id;
-                $newQuote->lang        = "fr";
+                $newQuote->lang        = "vi";
                 $newQuote->content     = $quote;
-                $newQuote->status      = "Accepted";
+                $newQuote->status      = "Pending";
                 $newQuote->save();
             }
             $count++;
             echo "Finished ".$count."<br>";
-            $this->updateCounter($ship_id, "fr");
+            $this->updateCounter($ship_id, "vi");
         }
 
         /*

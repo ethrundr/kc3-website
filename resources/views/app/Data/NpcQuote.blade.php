@@ -22,13 +22,13 @@
         <h2>Quote List #{{ $ship_id }}</h2>
     </div>
     
-    @for ($i=1; $i<=count($quoteTitle); $i++)
+    @for ($i=0; $i<count($quoteTitle); $i++)
         <form action="{{url('data/quotes/addQuote')}}" method="POST" >
             {{ csrf_field() }}
             <div class="col-sm-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">[#{{$i}}]　{{ $quoteTitle[$i] }}</h3>
+                        <h3 class="panel-title">[#{{$quoteTitle[$i]}}]　{{ $quoteTitle[$i] }}</h3>
                     </div>
                     <div class="panel-body no-padding">
                         <table class="table table-bordered table-striped table-hover col-sm-12 no-margin" id="quote-table">
@@ -41,7 +41,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($quotes[$i] as $key => $quote)
+                                @foreach ($quotes[$quoteTitle[$i]] as $key => $quote)
                                     <tr>
                                         <td>{{ $quote['lang'] }}</td>
                                         <td>{{ $quote['content'] }}</td>
@@ -78,7 +78,7 @@
                                     </td>
                                     <td colspan="2">
                                         <input class="form-control" type="hidden" name="ship_id" id="ship_id" value="{{$ship_id}}"></input>
-                                        <input class="form-control" type="hidden" name="voice_id" id="voice_id" value="{{$i}}"></input>
+                                        <input class="form-control" type="hidden" name="voice_id" id="voice_id" value="{{$quoteTitle[$i]}}"></input>
                                         <input class="form-control" name="content" id="content" rows="1"></input>
                                     </td>
                                     <td>

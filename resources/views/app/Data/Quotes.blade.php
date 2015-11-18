@@ -72,38 +72,5 @@
             @endif
         </tbody>
     </table>
-    
-    <form action="quotes/addQuote" method="POST" class="form-horizontal col-sm-6">
-        {{ csrf_field() }}
-
-        <div class="form-group">
-            <label for="task" class="col-sm-2 control-label">Ship Id</label>
-            <div class="col-sm-10">
-                <input type="text" name="ship_id" id="ship_id" class="form-control">
-            </div>
-            <label for="task" class="col-sm-2 control-label">Voice Id</label>
-            <div class="col-sm-10">
-                <input type="text" name="voice_id" id="voice_id" class="form-control">
-            </div>
-            <label for="task" class="col-sm-2 control-label">Language</label>
-            <div class="col-sm-10">
-                <input type="text" name="lang" id="lang" class="form-control">
-            </div>
-            <label for="task" class="col-sm-2 control-label">Content</label>
-            <div class="col-sm-10">
-                <input type="text" name="content" id="content" class="form-control">
-            </div>
-        </div>
-
-        <!-- Add Quote Button -->
-        <div class="form-group">
-            <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
-                    <i class="fa fa-plus"></i> Add Quote
-                </button>
-            </div>
-        </div>
-    </form>
-
 </div>
 @endsection
