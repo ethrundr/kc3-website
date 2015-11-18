@@ -30,6 +30,7 @@ Route::controller('data/master' , 'Data\MasterController');
 Route::controller('data/quests' , 'Data\QuestsController');
 Route::post('data/quotes/addQuote', 'Data\QuotesController@submitQuote');
 Route::get('data/quotes/import', 'Data\QuotesController@import');
+Route::get('data/quotes/ship/{ship_id}' , 'Data\QuotesController@showShipQuote');
 Route::controller('data/quotes' , 'Data\QuotesController');
 Route::controller('data'        , 'Data\MainController');
 
