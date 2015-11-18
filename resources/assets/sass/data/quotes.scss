@@ -1,0 +1,25 @@
+.data-quotes {
+    padding:10px 10px 10px 10px;
+}
+
+#quote-table {
+    tr {
+        cursor: pointer; 
+        cursor: hand;
+        td {
+            text-align: center;
+        }
+    }
+
+    thead th {
+        text-align: center;
+    }
+
+    .half {
+        background-color: #D4CF6A;
+    }
+
+    .full {
+    background-color: #51A35F;
+    }
+}

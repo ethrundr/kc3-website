@@ -15,7 +15,7 @@
 @endsection
 
 @section('content')
-<div class="row data-quests">
+<div class="row data-quotes">
     <div class="col-sm-12">
         <a href="{{url('data/quotes')}}">Back to Quote List</a>
         

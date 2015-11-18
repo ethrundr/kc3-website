@@ -19,11 +19,14 @@ elixir(function(mix) {
     
     mix.sass('data/master.scss', 'public/css/data/master.css');
     mix.sass('data/quests.scss', 'public/css/data/quests.css');
+    mix.sass('data/quotes.scss', 'public/css/data/quotes.css');
+    mix.sass('data/ship-quote.scss', 'public/css/data/ship-quote.css');
     
     // mix.sass('Site/home.scss', 'public/css/site/home.css');
     
     // mix.copy("resources/assets/js/Site", "public/js/site");
     
     mix.browserify("main.js", "public/js/main.js");
-    
+    mix.browserify("quotes.js", "public/js/quotes.js");
+    mix.browserify("ship-quote.js", "public/js/ship-quote.js");
 });
