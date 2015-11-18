@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuotesTable extends Migration
+class CreateQuoteCountersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,12 @@ class CreateQuotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('quotes', function (Blueprint $table) {
+        Schema::create('quote_counters', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ship_id', 15);
-            $table->string('voice_id', 5);
             $table->string('lang', 5);
-            $table->text('content');
-            $table->string('status', 10);
+            $table->integer('accepted');
+            $table->integer('pending');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateQuotesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('quotes');
+        Schema::drop('quote_counters');
     }
 }

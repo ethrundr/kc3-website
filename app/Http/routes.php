@@ -29,6 +29,7 @@ Route::get('player/{id}', function ($id) {
 Route::controller('data/master' , 'Data\MasterController');
 Route::controller('data/quests' , 'Data\QuestsController');
 Route::post('data/quotes/addQuote', 'Data\QuotesController@submitQuote');
+Route::get('data/quotes/import', 'Data\QuotesController@import');
 Route::controller('data/quotes' , 'Data\QuotesController');
 Route::controller('data'        , 'Data\MainController');
 
