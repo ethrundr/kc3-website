@@ -240,14 +240,14 @@ class QuotesController extends Controller {
                 $newQuote = new Quote;
                 $newQuote->ship_id     = $ship_id;
                 $newQuote->voice_id    = $voice_id;
-                $newQuote->lang        = "vi";
+                $newQuote->lang        = "en";
                 $newQuote->content     = $quote;
                 $newQuote->status      = "Pending";
                 $newQuote->save();
             }
             $count++;
             echo "Finished ".$count."<br>";
-            $this->updateCounter($ship_id, "vi");
+            $this->updateCounter($ship_id, "en");
         }
 
         /*
